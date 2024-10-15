@@ -1,0 +1,71 @@
+[data-theme='dark'] {
+  --ifm-background-color: #020617 !important;
+  --ifm-background-surface-color: #020617 !important;
+  --ifm-color-primary: #90cdf4;
+  --ifm-color-primary-dark: #60a5fa;
+  --ifm-color-primary-darker: #3b82f6;
+  --ifm-color-primary-darkest: #2563eb;
+  --ifm-color-primary-light: #dbeafe;
+  --ifm-color-primary-lighter: #dbeafe;
+  --ifm-color-primary-lightest: #eff6ff;
+  --ifm-navbar-link-color: #90cdf4 !important;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.navbar {
+  background-color: transparent !important;
+}
+
+.main-content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - 60px);
+}
+
+.title-text {
+  font-size: 3rem;
+  color: #90cdf4;
+}
+
+.pulsar-container {
+  display: flex;
+  margin-top: 3rem;
+  gap: 0.5rem;
+}
+
+.pulsar-letter {
+  display: inline-block;
+  animation: fadeIn 3s;
+}
+
+.description-text {
+  opacity: 0;
+  font-size: 1.5rem;
+  color: #90cdf4;
+  margin-top: 3rem;
+  animation: fadeIn 3s forwards;
+  animation-delay: 1s;
+}
+
+.light {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(144, 205, 244, 0.1) 0%, rgba(144, 205, 244, 0) 70%);
+    animation: light 2s infinite, fadeIn 3s;
+}
