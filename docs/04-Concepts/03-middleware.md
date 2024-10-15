@@ -18,7 +18,7 @@ export type Middleware = (
 Create a file called `server.ts` and add the following code.
 
 ```typescript
-import { start, router, json, log } from "pulsar-http";
+import { start, router, json, log } from "@pulsar-http/core";
 
 const { get } = router;
 

@@ -8,7 +8,7 @@ Pulsar provides helper functions to create responses with different content type
 Send a file as a response with the correct content type.
 
 ```typescript
-import { file } from "pulsar-http";
+import { file } from "@pulsar-http/core";
 
 export const handler = async () => {
     return await file("/path/to/your/file.txt");
@@ -20,7 +20,7 @@ export const handler = async () => {
 Send JSON data with the appropriate headers.
 
 ```typescript
-import { json } from "pulsar-http";
+import { json } from "@pulsar-http/core";
 
 export const handler = async () => {
     return json({ message: "Hello, World!" });
@@ -32,7 +32,7 @@ export const handler = async () => {
 Send an error response with a status code and optional message.
 
 ```typescript
-import { error } from "pulsar-http";
+import { error } from "@pulsar-http/core";
 
 export const handler = async () => {
     return error(404, "Not Found");
@@ -44,7 +44,7 @@ export const handler = async () => {
 Send a plain text response.
 
 ```typescript
-import { text } from "pulsar-http";
+import { text } from "@pulsar-http/core";
 
 export const handler = async () => {
     return text("Hello, this is a plain text response.");
@@ -56,7 +56,7 @@ export const handler = async () => {
 Send HTML content with the appropriate headers.
 
 ```typescript
-import { html } from "pulsar-http";
+import { html } from "@pulsar-http/core";
 
 export const handler = async () => {
     return html("<h1>Hello, World!</h1>");
@@ -68,7 +68,7 @@ export const handler = async () => {
 Redirect the client to a different URL.
 
 ```typescript
-import { redirect } from "pulsar-http";
+import { redirect } from "@pulsar-http/core";
 
 export const handler = async () => {
     return redirect("https://example.com");
@@ -80,7 +80,7 @@ export const handler = async () => {
 Stream data to the client.
 
 ```typescript
-import { stream } from "pulsar-http";
+import { stream } from "@pulsar-http/core";
 
 export const handler = async () => {
     const generator = async function* () {

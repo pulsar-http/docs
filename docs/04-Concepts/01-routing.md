@@ -4,7 +4,7 @@
 Define routes using HTTP methods like GET, POST, etc.
 
 ```typescript
-import { router, json, start } from "pulsar-http";
+import { router, json, start } from "@pulsar-http/core";
 
 const { get } = router;
 
@@ -20,7 +20,7 @@ start({
 Define routes with parameters. Use `params` to access them.
 
 ```typescript
-import { router, json, start } from "pulsar-http";
+import { router, json, start } from "@pulsar-http/core";
 
 const { get } = router;
 
@@ -40,7 +40,7 @@ Example: `/John` will respond with `Hello, John`.
 Group related routes under a common prefix.
 
 ```typescript
-import { router, file, start } from "pulsar-http";
+import { router, file, start } from "@pulsar-http/core";
 
 const { get, post } = router;
 

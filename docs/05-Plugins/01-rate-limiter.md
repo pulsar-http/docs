@@ -7,7 +7,7 @@ This prevents abuse and protects your server.
 ## Example
 
 ```typescript
-import { start, router, json, rateLimitMiddleware } from "pulsar-http";
+import { start, router, json, rateLimitMiddleware } from "@pulsar-http/core";
 
 const { get } = router;
 

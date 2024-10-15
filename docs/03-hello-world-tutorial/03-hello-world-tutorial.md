@@ -5,7 +5,7 @@
 This example shows how to create a simple HTTP server with Pulsar that returns a JSON response.
 
 ```typescript title="index.ts"
-import { start, router, json } from "pulsar-http";
+import { start, router, json } from "@pulsar-http/core";
 
 const { get } = router;
 

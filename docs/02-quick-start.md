@@ -12,5 +12,5 @@ Then you can simply create a new project and install Pulsar.
 
 ```bash
 bun init
-bun add pulsar-http
+bun add @pulsar-http/core
 ```
