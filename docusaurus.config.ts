@@ -8,15 +8,15 @@ const config: Config = {
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
-  url: 'https://your-docusaurus-site.example.com',
+  url: 'https://pulsar-http.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/',
+  baseUrl: '/docs',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'jvnm-dev', // Usually your GitHub org/user name.
-  projectName: 'pulsar-http', // Usually your repo name.
+  organizationName: 'pulsar-http', // Usually your GitHub org/user name.
+  projectName: 'docs', // Usually your repo name.
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -36,7 +36,7 @@ const config: Config = {
         docs: {
           sidebarPath: './sidebars.ts',
           editUrl:
-            'https://github.com/jvnm-dev/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+            'https://github.com/pulsar-http/core/tree/main/',
         },
         theme: {
           customCss: './src/css/custom.css',
@@ -65,7 +65,7 @@ const config: Config = {
           label: 'Documentation',
         },
         {
-          href: 'https://github.com/jvnm-dev/pulsar-http',
+          href: 'https://github.com/pulsar-http/core',
           label: 'GitHub',
           position: 'right',
         },
