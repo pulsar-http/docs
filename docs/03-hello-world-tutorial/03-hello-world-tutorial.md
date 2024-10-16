@@ -25,8 +25,6 @@ start({
 
 :::info
 
-All types of pulsar are available [in the `types.ts` file in the `src` directory of the repository](https://github.com/jvnm-dev/pulsar-http/blob/master/src/types.ts).
-
-This is useful for understanding what can be used in the `start()` function for example.
+API reference is available [here](https://pulsar-http.github.io/api/index.html).
 
 :::

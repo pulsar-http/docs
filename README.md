@@ -1,5 +1,10 @@
-# Pulsar - Documentation
+# Pulsar HTTP
 
-This repository contains the documentation about Pulsar.
+An incredibly simple, fast and lightweight toolkit for building web APIs
 
-[Pulsar source code is available here](https://github.com/pulsar-http/core)
+
+### Links
+
+[Pulsar source code ](https://github.com/pulsar-http/core)
+
+[Pulsar documentation](https://pulsar-http.github.io/docs/)

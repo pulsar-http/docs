@@ -34,9 +34,10 @@ const config: Config = {
       'classic',
       {
         docs: {
+          routeBasePath: '/read',
           sidebarPath: './sidebars.ts',
           editUrl:
-            'https://github.com/pulsar-http/core/tree/main/',
+            'https://github.com/pulsar-http/docs/tree/main/',
         },
         theme: {
           customCss: './src/css/custom.css',
@@ -63,6 +64,13 @@ const config: Config = {
           sidebarId: 'tutorialSidebar',
           position: 'left',
           label: 'Documentation',
+        },
+        {
+          type: 'docSidebar',
+          sidebarId: 'tutorialSidebar',
+          position: 'left',
+          label: 'API reference',
+          href: 'https://pulsar-http.github.io/docs/api/index.html',
         },
         {
           href: 'https://github.com/pulsar-http/core',

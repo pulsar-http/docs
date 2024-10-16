@@ -10,6 +10,7 @@
   --ifm-color-primary-lightest: #eff6ff;
   --ifm-navbar-link-color: #90cdf4 !important;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  --doc-sidebar-width: 358px !important;
 }
 
 @keyframes fadeIn {
