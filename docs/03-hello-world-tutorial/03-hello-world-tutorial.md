@@ -25,6 +25,6 @@ start({
 
 :::info
 
-API reference is available [here](https://pulsar-http.github.io/api/index.html).
+API reference is available [here](https://pulsar-http.github.io/docs/api/index.html).
 
 :::
