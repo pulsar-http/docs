@@ -47,9 +47,18 @@
   gap: 0.5rem;
 }
 
+@keyframes drawingText {
+  from {
+    stroke-dashoffset: 1000;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
 .pulsar-letter {
   display: inline-block;
-  animation: fadeIn 3s;
+  animation: fadeIn 3s, drawingText 200s infinite;
 }
 
 .description-text {

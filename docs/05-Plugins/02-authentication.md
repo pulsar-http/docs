@@ -6,6 +6,11 @@ Pulsar provides a simple way to add authentication to your server using a pre-bu
 
 It uses [Auth.js](https://authjs.dev).
 
+## Setup
+
+- Be sure to set `AUTH_SECRET` in your environment variables.
+- The `AUTH_BASE_PATH` environment variable can be used to set the base path for the Auth.js routes. The default is `/api/auth`.
+
 ## Example
 
 ```typescript
