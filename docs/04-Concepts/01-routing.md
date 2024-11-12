@@ -16,7 +16,7 @@ start({
 ```
 
 ## Route with Parameters
-Define routes with parameters. Use `params` to access them.
+Define routes with parameters. Use `pathParams` to access them.
 
 ```typescript
 import { router, json, start } from "@pulsar-http/core";
@@ -25,8 +25,8 @@ const { get } = router;
 
 start({
     routes: [
-        get('/:name', async (request, params) => {
-            return json({ message: `Hello, ${params.name}` });
+        get('/:name', async ({ request, pathParams }) => {
+            return json({ message: `Hello, ${pathParams.name}` });
         })
     ]
 });
@@ -74,7 +74,6 @@ If you don't pass a schema to a route, the body will be available as usual in th
 
 :::
 
-
 ```typescript
 import { router, json, start, type RouterHandler } from "@pulsar-http/core";
 import zod from "zod";
@@ -88,13 +87,51 @@ const userSchema = zod.object({
 
 type User = zod.infer<typeof userSchema>;
 
-const handleCreateUser: RouterHandler<User> = async (request, params, body) => {
+const handleCreateUser: RouterHandler<User> = async ({ body }) => {
     return json({ message: `User ${body.name} created! The user is ${body.age} years old.` });
 }
 
 start({
     routes: [
-        post('/users', handleCreateUser, userSchema)
+        post('/users', handleCreateUser, { bodySchema: userSchema })
+    ]
+});
+```
+
+## Route response validation
+
+As for the body, you can also validate the response of a route using a schema.
+
+If the response doesn't match the schema, Pulsar will automatically return a 500 error describing the issue.
+
+This is useful to ensure that your API is always returning the expected data.
+
+## Example
+```typescript
+import { router, json, start, type RouterHandler } from "@pulsar-http/core";
+import zod from "zod";
+
+const { post } = router;
+
+const userSchema = zod.object({
+    name: zod.string(),
+    age: zod.number()
+});
+
+const usersResponseSchema = zod.object({
+    users: zod.array(userSchema)
+}).strict();
+
+type User = zod.infer<typeof userSchema>;
+
+const handleCreateUser: RouterHandler<User> = async ({ body }) => {
+    return json({ message: `User ${body.name} created! The user is ${body.age} years old.` });
+}
+
+start({
+    routes: [
+        get('/users', async () => json({ users: [/*fill with users*/] }), { responseSchema: usersResponseSchema }),
+        post('/users', handleCreateUser, { bodySchema: userSchema })
     ]
 });
 ```
@@ -103,5 +140,7 @@ start({
 
 - Routes are defined using the `router` object.
 - Use `get()`, `post()`, etc. to define routes for different HTTP methods.
-- Use handler second argument's `params` to access route parameters.
+- Handlers options allow you to access request, path parameters, body, etc.
 - You can group related routes under a common prefix.
+- You can validate and parse the body of a route using a schema.
+- You can validate the response of a route using a schema.

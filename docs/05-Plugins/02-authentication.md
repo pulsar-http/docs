@@ -17,8 +17,8 @@ It uses [Auth.js](https://authjs.dev).
 import { start, router, authMiddleware, githubAuthProvider, text, getSession } from "@pulsar-http/core";
 
 const routes = [
-    router.get("/", async (req) => {
-        const session = await getSession(req);
+    router.get("/", async ({ request }) => {
+        const session = await getSession(request);
         return text(`Hello, ${session?.user?.name ?? 'guest'}!`);
     }),
 ];
@@ -43,6 +43,42 @@ In this example:
 - The `auth` middleware is added to the server, which will handle authentication for the GitHub provider.
 
 If you access the /api/auth/signin route and sign in with GitHub, the user's name will be displayed on the page.
+
+### Route protection
+
+You can protect routes by creating a higher-order handler that checks if the user is authenticated.
+
+```typescript
+import { getSession, error, type RouterHandler } from "@pulsar-http/core";
+
+export const withAuth = <Body>(handler: RouterHandler<Body>): RouterHandler<Body> => {
+    return async (...params) => {
+        const session = await getSession(params[0]);
+
+        if (!session?.user) {
+            return error(401, 'You must be logged in to access this resource');
+        }
+
+        return handler(...params);
+    };
+};
+```
+
+You can then use this function to protect routes.
+
+```typescript
+import { start, router, authMiddleware, githubAuthProvider, text, getSession } from "@pulsar-http/core";
+import { withAuth } from "./wrappers/withAuth";
+
+const handler = async ({ request }) => {
+    const session = await getSession(request);
+    return text(`Hello, ${session?.user?.name}!`);
+};
+
+const routes = [
+    router.get("/", withAuth(handler)),
+];
+```
 
 ## Summary
 - Authentication is the process of verifying the identity of a user.
