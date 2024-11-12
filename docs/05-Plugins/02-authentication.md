@@ -8,13 +8,15 @@ It uses [Auth.js](https://authjs.dev).
 
 ## Setup
 
+- Install the `@auth/core` package to use this middleware. It contains the providers.
 - Be sure to set `AUTH_SECRET` in your environment variables.
 - The `AUTH_BASE_PATH` environment variable can be used to set the base path for the Auth.js routes. The default is `/api/auth`.
 
 ## Example
 
 ```typescript
-import { start, router, authMiddleware, githubAuthProvider, text, getSession } from "@pulsar-http/core";
+import githubAuthProvider from '@auth/core/providers/github';
+import { start, router, authMiddleware, text, getSession } from "@pulsar-http/core";
 
 const routes = [
     router.get("/", async ({ request }) => {
@@ -67,10 +69,11 @@ export const withAuth = <Body>(handler: RouterHandler<Body>): RouterHandler<Body
 You can then use this function to protect routes.
 
 ```typescript
-import { start, router, authMiddleware, githubAuthProvider, text, getSession } from "@pulsar-http/core";
-import { withAuth } from "./wrappers/withAuth";
+import githubAuthProvider from '@auth/core/providers/github';
+import {start, router, authMiddleware, text, getSession, type RouterHandler} from "@pulsar-http/core";
+import {withAuth} from "./wrappers/withAuth";
 
-const handler = async ({ request }) => {
+const handler: RouterHandler = async ({request}) => {
     const session = await getSession(request);
     return text(`Hello, ${session?.user?.name}!`);
 };
@@ -78,6 +81,20 @@ const handler = async ({ request }) => {
 const routes = [
     router.get("/", withAuth(handler)),
 ];
+
+const auth = authMiddleware({
+    providers: [
+        githubAuthProvider({
+            clientId: "YOUR_CLIENT_ID",
+            clientSecret: "YOUR_CLIENT_SECRET"
+        }),
+    ]
+});
+
+start({
+    routes,
+    middlewares: [auth],
+});
 ```
 
 ## Summary
